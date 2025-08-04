@@ -9,7 +9,7 @@ export default function Meal({ title, slug, image, summary, creator }) {
       <Card className="h-100 bg-primary bg-gradient bg-opacity-10 border-0 shadow-sm text-light">
         <div className="position-relative" style={{ height: "200px" }}>
           <Image
-            src={image?.startsWith("http") ? image : "/fallback.jpg"}
+            src={image}
             alt={title}
             fill
             className="object-fit-cover rounded-top"

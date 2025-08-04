@@ -1,18 +1,18 @@
-"use client";
-
 import Link from "next/link";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { getMealImages } from "@/lib/meals";
 import ImageSlideshow from "@/components/images/image-slideshow";
-import "./page.scss"; 
+import "./page.scss";
 
-export default function Home() {
+export default async function Home() {
+  const images = await getMealImages();
   return (
     <>
       <header className="pt-5 pb-4 text-light">
         <Container>
           <Row className="align-items-center justify-content-between">
             <Col md={5} className="d-flex align-self-stretch">
-              <ImageSlideshow />
+              <ImageSlideshow images={images} />
             </Col>
             <Col md={5}>
               <h1 className="text-primary display-2 fw-bold">
@@ -23,7 +23,10 @@ export default function Home() {
               </p>
               <div className="d-flex flex-column flex-md-row gap-3">
                 <Link href="/community" passHref>
-                  <Button variant="transparent" className="text-primary border-0">
+                  <Button
+                    variant="transparent"
+                    className="text-primary border-0"
+                  >
                     Join the Community
                   </Button>
                 </Link>
@@ -54,7 +57,9 @@ export default function Home() {
           </section>
 
           <section className="text-center">
-            <h2 className="mb-3 fw-semibold text-primary">Why NextLevel Food?</h2>
+            <h2 className="mb-3 fw-semibold text-primary">
+              Why NextLevel Food?
+            </h2>
             <p className="lead text-white">
               NextLevel Food is a platform for foodies to share their favorite
               recipes with the world. It&apos;s a place to discover new dishes,

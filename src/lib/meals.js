@@ -23,6 +23,15 @@ export async function getMeal(slug) {
   };
 }
 
+export async function getMealImages() {
+  await connectDB();
+  const meals = await Meal.find({}, { image: 1, title: 1 }).lean();
+  return meals.map((meal) => ({
+    image: meal.image,
+    alt: meal.title,
+  }));
+}
+
 export async function saveMeal(meal) {
   await connectDB();
 
